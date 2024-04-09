@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>528</width>
+    <height>287</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Yönetici Paneli</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>531</width>
+     <height>291</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 248, 242);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>90</y>
+     <width>211</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>13</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton#pushButton{
+	background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1 y2:0.477, stop:0 rgba(11,131,120,219), stop:1 rgba(85,98,112,226));
+	color:rgba(255,255,255,210);
+	border-radius:15px;
+}
+
+QPushButton#pushButton:hover{
+	background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1 y2:0.477, stop:0 rgba(150,123,111,219), stop:1 rgba(85,81,84,226));
+}
+
+QPushButton#pushButton:pressed{
+	padding-left:5px;
+	padding-top:5px;
+	background-color:rgba(150,123,111,255);
+}</string>
+   </property>
+   <property name="text">
+    <string>Öğrenci Ekle</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_2">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>90</y>
+     <width>211</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>13</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton#pushButton_2{
+	background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1 y2:0.477, stop:0 rgba(11,131,120,219), stop:1 rgba(85,98,112,226));
+	color:rgba(255,255,255,210);
+	border-radius:15px;
+}
+
+QPushButton#pushButton_2:hover{
+	background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1 y2:0.477, stop:0 rgba(150,123,111,219), stop:1 rgba(85,81,84,226));
+}
+
+QPushButton#pushButton_2:pressed{
+	padding-left:5px;
+	padding-top:5px;
+	background-color:rgba(150,123,111,255);
+}</string>
+   </property>
+   <property name="text">
+    <string>Öğrenci Çıkar</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_3">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>190</y>
+     <width>211</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>13</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton#pushButton_3{
+	background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1 y2:0.477, stop:0 rgba(11,131,120,219), stop:1 rgba(85,98,112,226));
+	color:rgba(255,255,255,210);
+	border-radius:15px;
+}
+
+QPushButton#pushButton_3:hover{
+	background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1 y2:0.477, stop:0 rgba(150,123,111,219), stop:1 rgba(85,81,84,226));
+}
+
+QPushButton#pushButton_3:pressed{
+	padding-left:5px;
+	padding-top:5px;
+	background-color:rgba(150,123,111,255);
+}</string>
+   </property>
+   <property name="text">
+    <string>Öğrenci Düzenle</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_4">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>190</y>
+     <width>211</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>13</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton#pushButton_4{
+	background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1 y2:0.477, stop:0 rgba(11,131,120,219), stop:1 rgba(85,98,112,226));
+	color:rgba(255,255,255,210);
+	border-radius:15px;
+}
+
+QPushButton#pushButton_4:hover{
+	background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1 y2:0.477, stop:0 rgba(150,123,111,219), stop:1 rgba(85,81,84,226));
+}
+
+QPushButton#pushButton_4:pressed{
+	padding-left:5px;
+	padding-top:5px;
+	background-color:rgba(150,123,111,255);
+}</string>
+   </property>
+   <property name="text">
+    <string>Yoklama Başlat</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>20</y>
+     <width>201</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Bahnschrift</family>
+     <pointsize>20</pointsize>
+     <weight>75</weight>
+     <italic>false</italic>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string>Yönetici Paneli</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
