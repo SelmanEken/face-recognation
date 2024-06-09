@@ -137,7 +137,7 @@ QPushButton#pushButton_3:pressed{
 }</string>
    </property>
    <property name="text">
-    <string>Öğrenci Düzenle</string>
+    <string>Yoklama Sorgula</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_4">

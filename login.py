@@ -23,6 +23,7 @@ class LoginPage(QWidget):
             super().keyPressEvent(event)  # Diğer tuş basımları için varsayılan işlemi yap
     
     def KaydolButon(self):
+        self.kaydolac.temizle()  # Arayüz yeniden açıldığında girilen bilgileri temizle
         self.kaydolac.show()
 
     def GirisYap(self):
@@ -39,7 +40,7 @@ class LoginPage(QWidget):
                 host='localhost',
                 user='root',
                 password='Se563214',
-                database='face'
+                database='sface'
             )
             cursor = veritabani.cursor()
             # Kullanıcı bilgilerini veritabanından kontrol et

@@ -34,6 +34,17 @@ class KaydolPage(QWidget):
             model = QStringListModel(self.secilen_dersler)
             self.kaydolform.secilen_ders.setModel(model)
 
+    def temizle(self):
+        # Tüm girdi alanlarını temizle
+        self.kaydolform.yoneticiAd.clear()
+        self.kaydolform.yoneticiSoyad.clear()
+        self.kaydolform.yoneticikadi.clear()
+        self.kaydolform.yoneticisifre.clear()
+        self.kaydolform.yoneticieposta.clear()
+        self.secilen_dersler.clear()
+        model = QStringListModel(self.secilen_dersler)
+        self.kaydolform.secilen_ders.setModel(model)
+
     def kayit_ol(self):
         yonetici_ad = self.kaydolform.yoneticiAd.text()
         yonetici_soyad = self.kaydolform.yoneticiSoyad.text()
@@ -46,7 +57,7 @@ class KaydolPage(QWidget):
             host='localhost',
             user='root',
             password='Se563214',
-            database='face'
+            database='sface'
         )
 
         # Veritabanı üzerinde işlem yapacak bir cursor oluştur
@@ -100,4 +111,5 @@ if __name__ == "__main__":
     ui.setupUi(Form)
     kaydol_page = KaydolPage()
     Form.show()
+
     sys.exit(app.exec_())

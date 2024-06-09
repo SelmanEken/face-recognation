@@ -15,34 +15,35 @@ class OgrenciCikarPage(QWidget):
             host="localhost",
             user="root",
             password="Se563214",
-            database="face"
+            database="sface"
         )
         self.cursor = self.db.cursor()
 
         # Dersleri comboBox'a ekle
-        self.populate_courses()
+        self.dersleri_doldur()
 
         # PushButton'a tıklandığında çalışacak fonksiyonu bağla
-        self.ui.pushButton.clicked.connect(self.populate_listview)
-        self.ui.pushButton_2.clicked.connect(self.remove_student_from_course)
+        self.ui.pushButton.clicked.connect(self.listview_doldur)
+        self.ui.pushButton_2.clicked.connect(self.ogrenciyi_dersten_cikar)
 
-    def populate_courses(self):
+    def dersleri_doldur(self):
         query = "SELECT DersID, DersAdi FROM Ders"
         self.cursor.execute(query)
-        courses = self.cursor.fetchall()
-        for course_id, course_name in courses:
-            self.ui.comboBox.addItem(course_name, course_id)
+        dersler = self.cursor.fetchall()
+        for ders_id, ders_adi in dersler:
+            self.ui.comboBox.addItem(ders_adi, ders_id)
 
-    def populate_listview(self):
+    def listview_doldur(self):
         # Seçilen dersin adını al
-        course_name = self.ui.comboBox.currentText()
+        ders_adi = self.ui.comboBox.currentText()
+    
     
         # Seçilen dersin ID'sini bul
         query = "SELECT DersID FROM Ders WHERE DersAdi = %s"
-        self.cursor.execute(query, (course_name,))
-        result = self.cursor.fetchone()
-        if result:
-            course_id = result[0]
+        self.cursor.execute(query, (ders_adi,))
+        sonuc = self.cursor.fetchone()
+        if sonuc:
+            course_id = sonuc[0]
         else:
             print("Ders bulunamadı.")
             return
@@ -69,44 +70,44 @@ class OgrenciCikarPage(QWidget):
 
         # Öğrencileri tabloya ekle
         for ogrenci_no, ogrenci_ad, ogrenci_soyad in ogrenciler:
-            row_position = self.ui.tableWidget.rowCount()
-            self.ui.tableWidget.insertRow(row_position)
-            self.ui.tableWidget.setItem(row_position, 0, QTableWidgetItem(str(ogrenci_no)))
-            self.ui.tableWidget.setItem(row_position, 1, QTableWidgetItem(ogrenci_ad))
-            self.ui.tableWidget.setItem(row_position, 2, QTableWidgetItem(ogrenci_soyad))
+            satir_pozisyonu = self.ui.tableWidget.rowCount()
+            self.ui.tableWidget.insertRow(satir_pozisyonu)
+            self.ui.tableWidget.setItem(satir_pozisyonu, 0, QTableWidgetItem(str(ogrenci_no)))
+            self.ui.tableWidget.setItem(satir_pozisyonu, 1, QTableWidgetItem(ogrenci_ad))
+            self.ui.tableWidget.setItem(satir_pozisyonu, 2, QTableWidgetItem(ogrenci_soyad))
 
-    def remove_student_from_course(self):
+    def ogrenciyi_dersten_cikar(self):
         # Seçilen öğrenciyi belirlemek için seçilen satırı al
-        selected_row = self.ui.tableWidget.currentRow()
-        if selected_row < 0:
+        secilen_satir = self.ui.tableWidget.currentRow()
+        if secilen_satir < 0:
             QMessageBox.warning(self, 'Uyarı', 'Lütfen bir öğrenci seçin.')
             return
 
         # Seçilen öğrencinin bilgilerini al
-        ogrenci_no = self.ui.tableWidget.item(selected_row, 0).text()
+        ogrenci_no = self.ui.tableWidget.item(secilen_satir, 0).text()
 
         # Seçilen dersin adını al
-        course_name = self.ui.comboBox.currentText()
+        ders_adi = self.ui.comboBox.currentText()
 
         # Seçilen dersin ID'sini bul
         query = "SELECT DersID FROM Ders WHERE DersAdi = %s"
-        self.cursor.execute(query, (course_name,))
-        result = self.cursor.fetchone()
-        if result:
-            course_id = result[0]
+        self.cursor.execute(query, (ders_adi ,))
+        sonuc = self.cursor.fetchone()
+        if sonuc:
+            ders_id = sonuc[0]
         else:
             print("Ders bulunamadı.")
             return
 
         # Kullanıcıyı uyar
-        msg = f"{ogrenci_no} numaralı öğrenciyi {course_name} dersinden çıkarmak istediğinizden emin misiniz?"
+        msg = f"{ogrenci_no} numaralı öğrenciyi {ders_adi} dersinden çıkarmak istediğinizden emin misiniz?"
         reply = QMessageBox.question(self, 'Öğrenci Dersinden Çıkar', msg, QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
 
         if reply == QMessageBox.Yes:
             try:
                 # Öğrenciyi belirli dersten çıkar
                 query = "DELETE FROM OgrenciDers WHERE OgrenciNo = %s AND DersID = %s"
-                self.cursor.execute(query, (ogrenci_no, course_id))
+                self.cursor.execute(query, (ogrenci_no, ders_id))
 
                 self.db.commit()
 
@@ -114,7 +115,7 @@ class OgrenciCikarPage(QWidget):
                 QMessageBox.information(self, 'Başarılı', 'Öğrenci başarıyla dersden çıkarıldı.')
 
                 # Tabloyu yeniden doldur
-                self.populate_listview()
+                self.listview_doldur()
             except mysql.connector.Error as err:
                 print("Hata:", err)
                 QMessageBox.warning(self, 'Hata', 'Öğrenci dersden çıkarılırken bir hata oluştu.')
